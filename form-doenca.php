@@ -8,12 +8,7 @@
     <title>medica.me</title>
     <?php
 
-    try{
-      $banco = new PDO('mysql:host=localhost;dbname=medica','root','root');
-      $banco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    }catch(PDOException $e){
-      echo $e->getMessage();
-    }
+    require 'db.php';
 
     ?>
   </head>
@@ -28,7 +23,7 @@
 	    </header>
 	    <div id="list-usuarios" class="main-list">
 	    	<h2 class="title">Cadastro Doenças</h2>
-        <form id="user-form" class="" action="cadastro-doenca.php" method="post">
+        <form id="" class="insert-form" action="cadastro-doenca.php" method="post">
           <span>Nome:</span>
           <input id="doenca-cid" type="text" name="nome" value="">
           <span>CID:</span>

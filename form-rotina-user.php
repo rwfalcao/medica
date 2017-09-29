@@ -8,12 +8,7 @@
     <title>medica.me</title>
     <?php
 
-    try{
-      $banco = new PDO('mysql:host=localhost;dbname=medica','root','root');
-      $banco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    }catch(PDOException $e){
-      echo $e->getMessage();
-    }
+    require 'db.php';
 
     $sql_usuario="SELECT * FROM Usuario ORDER BY nome";
 
@@ -57,16 +52,19 @@
               //echo '<li id="'.$usuario->idUsuario.'">'.$usuario->nome.' '.$usuario->sobrenome.'</li>';
 
               echo '<li>
-                      <span>
-                        '.$usuario->nome.' '.$usuario->sobrenome.'
-                      </span>
-                      <form action="form-rotina-meds.php" method="post">
-                        <button type="submit" name="username" class="" value="'.$usuario->idUsuario.'">
+
+                      <form class="select" action="form-rotina-meds.php" method="post">
+                        <button  type="submit" name="username" class="" value="'.$usuario->idUsuario.'">
+                        <i class="fa fa-arrow-right" aria-hidden="true"></i>
 
                         </button>
                       </form>
+                      <span>
+                        '.$usuario->nome.' '.$usuario->sobrenome.'
+                      </span>
                     </li>';
             }
+
            ?>
         </ul>
       </div>

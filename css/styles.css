@@ -17,10 +17,11 @@ h1, h2{
 /*main menu*/
 
 footer{
-  position: absolute;
+  position: fixed;
   bottom: 0px;
   width: 100%;
   min-height: 300px;
+  background: white;
 }
 
 .container{
@@ -100,23 +101,22 @@ div.menu-item:nth-child(1){
 }
 
 #page-banner{
-    background: rgba(14, 123, 74, 1) ;
+    background: rgba(14, 123, 74, 1);
     padding: 0px 0;
     position: fixed;
     width: 100%;
     z-index: 1;
-    min-height: 350px;
-  padding-top: 50px;
+    min-height: 200px;
+    padding-top: 0px;
 }
 
 #page-banner h1{
     width: 100%;
     text-align: left;
     margin-left: 10%;
-    padding-top: 35px;
+    padding-top: 25px;
     font-size: 4.5em;
     color: rgba(240, 255, 248, 1);
-
 }
 
 #page-banner p{
@@ -152,11 +152,12 @@ form#search{
   width: 90%;
   display: block;
   position: absolute;
-  top: 377px;
+  top: 200px;
   left: 30px;
   margin: 0 auto;
   overflow: hidden;
   z-index: 0;
+  padding-bottom: 300px;
 }
 
 .main-list ul.usuarios-list li span{
@@ -167,6 +168,24 @@ form#search{
   min-width: 30px;
   min-height: 30px;
 }
+
+form.select {
+    display: inline-block;
+}
+
+form.select button {
+    background-color: rgba(12, 126, 75, 1);
+  border: solid 5px rgba(12, 126, 75, 0.7);
+  color: white;
+  padding: 0px 15px;
+
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 2.5em;
+  margin: 0 30px 0 0;
+}
+
 
 
 #add-form {
@@ -327,7 +346,7 @@ form#search{
 
 /*usuários cadastro*/
 
-#user-form input[type="text"]{
+.insert-form input[type="text"]{
   display: block;
   width: 90%;
   border: 1px solid grey;
@@ -339,22 +358,22 @@ form#search{
   text-align: center;
 }
 
-form#user-form{
-  margin-top: 100px;
+form.insert-form{
+  margin-top: 35px;
 }
 
-form#user-form span{
+form.insert-form span{
   display: block;
   margin: 0 auto;
   text-align: center;
   font-size: 2em;
 }
 
-form#user-form span:not(:first-child){
+form.insert-form span:not(:first-child){
   margin-top: 75px;
 }
 
-form#user-form button{
+form.insert-form button{
   background-color: rgba(12, 126, 75, 1);
   border: solid 5px rgba(12, 126, 75, 0.7);
   color: white;
@@ -364,6 +383,7 @@ form#user-form button{
   display: block;
   font-size: 3em;
   margin: 100px auto;
+  border-radius: 10px;
 }
 
 div#rotina-final h2 {
@@ -375,6 +395,68 @@ div#rotina-final h2 {
 div#rotina-final {
   margin-top: 400px;
 }
+
+.insert-form select {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    height: 150px;
+    font-size: 60px;
+    padding: 0 0 0 30px;
+    background: rgba(14, 123, 74, 1);
+    border-radius: 15px;
+    color: white;
+
+
+}
+
+.insert-form select option{
+    min-width: 500px;
+    font-size: 20px;
+    text-align: center;
+     height: 200px;
+
+}
+
+
+.title span {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 4em;
+}
+
+.horarios span{
+    display: block;
+    text-align: center;
+    padding-top: 50px;
+    font-size: 4em;
+}
+
+.horarios{
+    margin-top: 100px;
+}
+
+div.selectHora{
+  text-align: center;
+}
+
+.selectHora select {
+    display: inline-block;
+    width: 130px;
+    height: 130px;
+    padding: 0 0 0 23px;
+    border-radius: 10px;
+
+}
+
+span.aspas{
+    display: inline !important;
+    font-size: 5em !important;
+    color: rgba(14, 123, 74, 1);
+}
+
+
 
 
 

@@ -8,47 +8,111 @@
     <title>medica.me</title>
     <?php
 
-    try{
-      $banco = new PDO('mysql:host=localhost;dbname=medica','root','root');
-      $banco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    }catch(PDOException $e){
-      echo $e->getMessage();
-    }
+    require 'db.php';
+    //$dateArray = getdate();
+    //$currentDate = $dateArray['year'].'-'.$dateArray['mon'].'-'.$dateArray['mday'];
 
-   // $sql_meds="SELECT * FROM Medicamento ORDER BY nome";
-
-   // $query_meds = $banco->query( $sql_meds );
-    //$result_meds = $query_meds->fetchAll(PDO::FETCH_OBJ);
-
-    $medId = $_POST['medname'];
+    //date_default_timezone_set('Brazil/Brasilia');
+    //$date = date('d/m/Y h:i:s a', time());
+    //$date = getdate();
+    $freq = $_POST['frequencia'];
     $userId = $_GET['userId'];
-    //$userId = str_replace(' ', '', $userId);
-    //echo $userId.'<br>';
-    //echo $medId;
+    $medId = $_GET['medId'];
+    $freq_tempo = $freq - 1;
+
+    /*Inserção do banco da rotina de acordo com o usuário e o medicamento informado*/
+
+    $insert = $banco->prepare('INSERT INTO RotinaTratamento(Usuario_idUsuario, Medicamento_idMedicamento,frequencia) VALUES(:userId, :medId, :freq)');
+    $insert->bindParam(':userId', $userId);
+    $insert->bindParam(':medId', $medId);
+    $insert->bindParam(':freq', $freq);
+
+    $freq = $_POST['frequencia'];
+    $userId = $_GET['userId'];
+    $medId = $_GET['medId'];
+
+    $insert->execute();
+
+    /*Chamada no banco para conseguir a hora que o usuário acorda e o total de horas que o usuário costuma ficar acordado*/
+
+    $sql_tempo='SELECT TIME_TO_SEC(horaAcorda) as horaAcorda,TIME_TO_SEC(TIMEDIFF(horaDorme,horaAcorda)) as totalSegundos FROM Usuario WHERE idUsuario = '.$userId.'';
+
+    $query_tempo = $banco->query( $sql_tempo );
+    $result_tempo = $query_tempo->fetchAll(PDO::FETCH_OBJ);
+    $tempoAcordado = $result_tempo[0]->totalSegundos;
+    $tempoAcordadoTratado = $tempoAcordado-2400; //tempo acordado em segundos, menos 40 minutos. 20minutos depois e acordar e 20minutos abtes de dormir
+    $horaAcorda = $result_tempo[0]->horaAcorda;
+    $horaAcordaTratada = $horaAcorda+1200;
+
+    /*Chamada no banco para conseguir id da rotina*/
+
+    $sql_rotina = 'SELECT idRotinaTratamento FROM RotinaTratamento WHERE Usuario_idUsuario='.$userId.' AND 	Medicamento_idMedicamento='.$medId.'';
+
+    $query_rotina = $banco->query($sql_rotina);
+    $result_rotina = $query_rotina->fetchAll(PDO::FETCH_OBJ);
+    $idRotina = $result_rotina[0]->idRotinaTratamento;
+
+    /*Chamada no banco para conseguir dados do usuário e do medicamento*/
 
 
-    $sql_user='SELECT * FROM Usuario WHERE idUsuario = '.$userId.'';
+    $sql_dados = 'SELECT Usuario.nome as userFirst, Usuario.sobrenome as userLast, Medicamento.nome as medName, Medicamento.dosagem as dosagem FROM Usuario,Medicamento WHERE Usuario.idUsuario='.$userId.' AND Medicamento.idMedicamento ='.$medId.'';
+
+    $query_dados = $banco->query($sql_dados);
+    $result_dados = $query_dados->fetchAll(PDO::FETCH_OBJ);
+    $usuario = $result_dados[0]->userFirst.' '.$result_dados[0]->userLast;
+    $medicamento = $result_dados[0]->medName.' '.$result_dados[0]->dosagem;
 
 
-    $sql_med='SELECT * FROM Medicamento WHERE idMedicamento ='.$medId.'' ;
+    /*Chamada no banco*/
 
-    $query_user = $banco->query( $sql_user );
-    $result_user = $query_user->fetchAll(PDO::FETCH_OBJ);
+    $intervalo = $tempoAcordadoTratado / $freq_tempo;
 
-    $query_med = $banco->query( $sql_med );
-    $result_med = $query_med->fetchAll(PDO::FETCH_OBJ);
-/*
-    foreach($result_user as $result){
-      echo '<pre>'.print_r($result).'</pre></br>';
+
+    //$insert->execute();
+    $diasIngestao = 3;
+
+    $horarios = array();
+
+    for($i = 0 ; $i < $diasIngestao ; $i++){
+      $dataHora = '';
+      $horaDose = $horaAcordaTratada;
+      for($j = 0 ; $j < $freq ; $j++){
+        $horaDoseTratada = gmdate("H:i:s", $horaDose);
+        if(!in_array($horaDoseTratada,$horarios)){
+          array_push($horarios, $horaDoseTratada);
+        }
+
+        $sql_ingestao = 'INSERT INTO Ingestao(dataHora, RotinaTratamento_idRotinaTratamento) VALUES(TIMESTAMP(CURRENT_DATE + INTERVAL '.$i.' DAY, "'.$horaDoseTratada.'"), :idRotina)';
+        $insert_ingestao = $banco->prepare( $sql_ingestao  );
+        $insert_ingestao->bindParam(':idRotina', $idRotina);
+
+
+        $dataHora = "TIMESTAMP(CURRENT_DATE + INTERVAL ".$i." DAY, '".$horaDoseTratada."')";
+        $insert_ingestao->execute();
+        $horaDose+=$intervalo;
+      }
     }
 
-    foreach($result_med as $result){
-      echo '<pre>'.print_r($result).'</pre></br>';
-    }
+    /*DEBUG*/
+    /*
+    echo 'intervalo(segundos): '.$intervalo.'<br>';
+    echo 'intervalo: '.gmdate("H:i:s", $intervalo).'<br>';
+    echo 'segundos: '.$tempoAcordadoTratado.'<br>';
 
-*/
+    echo 'transformado: '.gmdate("H:i:s", $tempoAcordado).'<br>';
+
+    $ing1 = $horaAcorda+1200;
+    $ing2 = $ing1+$intervalo;
+    $ing3 = $ing2+$intervalo;
+    echo 'ing1: '.gmdate("H:i:s", $ing1).'<br>';
+    echo 'ing2: '.gmdate("H:i:s", $ing2).'<br>';
+    echo 'ing3: '.gmdate("H:i:s", $horaAcordaTratada).'<br>';
+    */
+    /*FIM DEBUG*/
 
     ?>
+
+
   </head>
   <body>
   	<div id="wrapper">
@@ -60,32 +124,22 @@
 	    	</div>
 	    </header>
 
-      <div id="rotina-final" class="">
-        <h2 class="userName">
+      <div id="ingestao-result" class="main-list">
+        <div class="title">
+          <span id="user"><?php echo $usuario; ?></span>
+          <span id="med"><?php echo $medicamento; ?></span>
+        </div>
+
+        <div class="horarios">
           <?php
-            echo $result_user[0]->nome.' '.$result_user[0]->sobrenome;
-           ?>
-        </h2>
-        <h2 class="meds">
-          <?php
-            echo $result_med[0]->nome.' '.$result_med[0]->dosagem;
-           ?>
-        </h2>
+                foreach($horarios as $horario){
+                  echo '<span>'.$horario.'</span>';
+                }
+          ?>
+        </div>
+
+
       </div>
-
-
-
-
-
-      <!--
-      <div id="add-form">
-        <form id="adicionar">
-          <input type="text" placeholder="Adicionar" />
-          <button>+</button>
-        </form>
-      </div>
-    -->
-
 
 
     <footer>
