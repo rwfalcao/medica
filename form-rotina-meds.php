@@ -16,7 +16,7 @@
     $result_meds = $query_meds->fetchAll(PDO::FETCH_OBJ);
 
     $userId = $_POST['username'];
-    $userId = str_replace(' ', '', $userId);
+    //$userId = str_replace(' ', '', $userId);
     //echo $userId;
 
 

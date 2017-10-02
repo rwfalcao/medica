@@ -6,6 +6,11 @@
     <link href="css\bootstrap.min.css" rel="stylesheet" />
 
     <title>medica.me</title>
+    <?php
+
+require 'db.php';
+
+    ?>
   </head>
   <body>
   	<div id="wrapper">
@@ -13,27 +18,25 @@
 	    	<div id="page-banner">
 	    		<h1 class="title">medica.me</h1>
           <p>Gerenciador de Ingestão de Medicamentos</p>
-          <form id="search">
-            <input type="text" placeholder="Buscar" />
-          </form>
+
 	    	</div>
 	    </header>
-	    <div id="list-usuarios" class="main-list">
-	    	<h2 class="title">Usuários Cadastrados</h2>
-	    	<ul>
 
-	    	</ul>
-	    </div>
-      <div id="add-form">
-        <form id="adicionar">
-          <input type="text" placeholder="Adicionar" />
-          <button>+</button>
-        </form>
+
+    <footer>
+      <div class="menu">
+        <div class="menu-item selected"><i class="fa fa-user" aria-hidden="true"></i>
+        </div>
+        <div class="menu-item "><i class="fa fa-medkit" aria-hidden="true"></i>
+        </div>
+        <div class="menu-item "><i class="fa fa-clock-o" aria-hidden="true"></i>
+        </div>
       </div>
+    </footer>
 
 
     </div>
-    <script src="js\user-list.js"></script>
+    <script src="js\cadastro-user.js"></script>
     <script src="js\bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/7913ddad50.js"></script>
 
