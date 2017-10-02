@@ -2,12 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
+    
     <link href="css\styles.css" rel="stylesheet" />
     <link href="css\bootstrap.min.css" rel="stylesheet" />
 
     <title>medica.me</title>
     <?php
-    
+
     require 'config/db.php';
     require 'views/layout/banner.php';
     require 'views/layout/footer.php';
