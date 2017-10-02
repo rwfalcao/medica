@@ -7,8 +7,10 @@
 
     <title>medica.me</title>
     <?php
-
-    require 'db.php';
+    
+    require 'config/db.php';
+    require 'views/layout/banner.php';
+    require 'views/layout/footer.php';
 
     $sql_usuario="SELECT * FROM Usuario ORDER BY nome";
 
@@ -19,13 +21,9 @@
   </head>
   <body>
   	<div id="wrapper">
-	    <header>
-	    	<div id="page-banner">
-	    		<h1 class="title">medica.me</h1>
-          <p>Gerenciador de Ingestão de Medicamentos</p>
 
-	    	</div>
-	    </header>
+      <?php renderBanner(); ?>
+
 
       <div class="main-list">
         <ul class="usuarios-list">
@@ -51,26 +49,7 @@
         </ul>
       </div>
 
-
-      <!--
-      <div id="add-form">
-        <form id="adicionar">
-          <input type="text" placeholder="Adicionar" />
-          <button>+</button>
-        </form>
-      </div>
-    -->
-
-    <footer>
-      <div class="menu">
-        <div class="menu-item selected"><i class="fa fa-user" aria-hidden="true"></i>
-        </div>
-        <div class="menu-item "><i class="fa fa-medkit" aria-hidden="true"></i>
-        </div>
-        <div class="menu-item "><i class="fa fa-clock-o" aria-hidden="true"></i>
-        </div>
-      </div>
-    </footer>
+    <?php renderFooter(); ?>
 
 
     </div>
