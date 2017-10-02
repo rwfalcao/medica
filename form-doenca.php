@@ -8,7 +8,7 @@
     <title>medica.me</title>
     <?php
 
-    require 'db.php';
+    require 'config/db.php';
 
     ?>
   </head>

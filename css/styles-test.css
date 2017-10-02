@@ -1,0 +1,168 @@
+body{
+    font-family: 'Raleway', sans-serif;
+}
+
+/* Banner */
+
+div#page-banner {
+    background: rgba(14, 123, 74, 0.9);
+    height: 210px;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+    top: 0px;
+}
+
+h1.title{
+    color: rgba(240, 255, 248, 1);
+    font-size: 6em;
+
+}
+
+p.title-desc{
+    color: rgba(240, 255, 248, 1);
+    font-size: 2.5em;
+}
+
+/* Content div */
+
+h2.content-title {
+    font-size: 4em;
+    margin-bottom: 50px;
+    /* text-align: center; */
+}
+
+div#content{
+ // margin-top: 210px;
+  padding-bottom: 190px;
+  padding-top: 50px;
+  font-family: 'Raleway', sans-serif;
+  width: 80%;
+  margin: 210px auto 0px auto;
+}
+
+/* Footer */
+
+footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    background: white;
+    min-height: 175px;
+    padding: 20px 0;
+    height: 190px;
+}
+
+div.menu{
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+div.menu-item{
+  width: 150px;
+  height: 150px;
+  border-top: rgba(14, 123, 74, 1) solid 3px;
+  border-bottom: rgba(14, 123, 74, 1) solid 3px;
+  border-right: rgba(14, 123, 74, 1) solid 1px;
+  text-align: center;
+  padding-top: 25px;
+}
+
+div.menu-item:last-child{
+  border-right: rgba(14, 123, 74, 1) solid 1px;
+}
+
+div.menu-item:nth-child(1){
+  border-right: rgba(14, 123, 74, 1) solid 1px;
+  border-left: rgba(14, 123, 74, 1) solid 1px;
+}
+
+.menu-item i{
+  font-size: 5.5em;
+  color: rgba(14, 123, 74, 1);
+}
+
+
+.selected{
+  background: rgba(14, 123, 74, 0.9);
+
+}
+
+.selected i{
+  color: white;
+}
+
+/*Lista*/
+
+.flex-container-ul li{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px rgba(14, 124, 74, 1);
+  margin-bottom: 40px;
+  background: rgba(240, 240, 240, 0.5);
+  overflow: hidden;
+
+}
+
+.registro{
+  font-size: 2.8em;
+}
+
+
+.main-list ul{
+  list-style: none;
+  padding: 0;
+}
+
+.main-list ul li{
+  height: 100px;
+}
+
+div.icon{
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  font-size: 2em;
+  text-align: center;
+  color: rgba(33, 33, 33, 0.68);
+  padding-top: 10px;
+}
+
+.button-group{
+  display: inline-block;
+}
+
+
+
+.select{
+  display: inline-block;
+
+}
+
+.button-group form:nth-child(2) button{
+  background: rgba(231, 60, 60, 0.90);
+  border: solid 2px rgba(231, 60, 60, 0.80);
+}
+
+.button-group button{
+  background-color: rgba(14, 124, 74, 1);
+    border: solid 2px rgba(12, 126, 75, 0.8);
+    color: white;
+    padding: 0px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 3.5em;
+    margin: 0;
+    height: 100px;
+width: 100px;
+}
+
+.registro {
+    padding-left: 20px;
+}

@@ -2,7 +2,7 @@
 require 'config/db.php';
 require 'views/layout/banner.php';
 require 'views/layout/footer.php';
-//require 'web/links.php';
+require 'web/links.php';
 require 'web/scripts.php';
  ?>
 
@@ -11,10 +11,7 @@ require 'web/scripts.php';
   <head>
     <meta charset="utf-8">
 
-    <?php// links(); ?>
-    <link href="css\styles-test.css" rel="stylesheet" />
-    <link href="css\bootstrap.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <?php links(); ?>
 
     <title>medica.me</title>
     <?php
@@ -26,8 +23,6 @@ require 'web/scripts.php';
   <body>
     <?php renderBanner(); ?>
   	<div id="content">
-
-
 
 
 
