@@ -1,5 +1,5 @@
 <?php
-require 'db.php';
+require 'config/db.php';
 
 //$insert = $banco->prepare('INSERT INTO Usuario(nome, sobrenome, horaAcorda, horaDorme) VALUES(:nome, :sobrenome, :horaAcorda, :horaDorme)');
 $insert = $banco->prepare('UPDATE Usuario SET nome = :nome, sobrenome = :sobrenome, horaAcorda = :horaAcorda, horaDorme = :horaDorme WHERE Usuario.idUsuario = :idUser');

@@ -1,5 +1,5 @@
 <?php
-require 'db.php';
+require 'config/db.php';
 $insert = $banco->prepare('INSERT INTO Doenca(nome, cid) VALUES(:nome, :cid)');
 $insert->bindParam(':nome', $nome);
 $insert->bindParam(':cid', $cid);

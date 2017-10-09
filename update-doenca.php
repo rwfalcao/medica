@@ -4,6 +4,18 @@ require 'views/layout/banner.php';
 require 'views/layout/footer.php';
 require 'web/links.php';
 require 'web/scripts.php';
+
+
+$doencaId = $_POST['doencaName'];
+
+$sql_doenca="SELECT * FROM Doenca WHERE idDoenca = ".$doencaId." ORDER BY nome";
+
+$query_doenca = $banco->query( $sql_doenca );
+$result_doenca = $query_doenca->fetchAll(PDO::FETCH_OBJ);
+
+foreach($result_doenca as $doenca){
+  echo '<pre>'.print_r($doenca).'</pre>';
+}
  ?>
 
 <!DOCTYPE html>
@@ -13,7 +25,7 @@ require 'web/scripts.php';
 
     <?php links(); ?>
 
-    <title>medica.me</title>
+    <title>doencaica.me</title>
     <?php
 
 
@@ -26,11 +38,11 @@ require 'web/scripts.php';
 
       <div class="main-list">
         <h2 class="content-title">Cadastro Doenças</h2>
-        <form class="insert-form" action="cadastro-doenca.php" method="post">
+        <form class="insert-form" action="update-doenca-db.php?doencaId=<?php echo $doencaId ?>" method="post">
           <span>Nome:</span>
-          <input id="doenca-cid" type="text" name="nome" value="">
+          <input id="doenca-cid" type="text" name="nome" value="<?php echo $result_doenca[0]->nome ?>">
           <span>CID:</span>
-          <input id="doenca-cid" type="text" name="cid" value="">
+          <input id="doenca-cid" type="text" name="cid" value="<?php echo $result_doenca[0]->cid ?>">
           <button type="submit" name="Submit" value="Submit">Enviar</button>
         </form>
       </div>

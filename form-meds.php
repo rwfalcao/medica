@@ -1,29 +1,32 @@
+<?php
+require 'config/db.php';
+require 'views/layout/banner.php';
+require 'views/layout/footer.php';
+require 'web/links.php';
+require 'web/scripts.php';
+ ?>
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <link href="css\styles.css" rel="stylesheet" />
-    <link href="css\bootstrap.min.css" rel="stylesheet" />
+
+    <?php links(); ?>
 
     <title>medica.me</title>
     <?php
 
-require 'db.php';
+
 
     ?>
   </head>
   <body>
-  	<div id="wrapper">
-	    <header>
-	    	<div id="page-banner">
-	    		<h1 class="title">medica.me</h1>
-          <p>Gerenciador de Ingestão de Medicamentos</p>
+    <?php renderBanner(); ?>
+  	<div id="content">
 
-	    	</div>
-	    </header>
-	    <div id="list-usuarios" class="main-list">
-	    	<h2 class="title">Cadastro</h2>
-        <form id="user-form" class="" action="cadastro-meds.php" method="post">
+      <div class="main-list">
+	    	<h2 class="content-title">Cadastro</h2>
+        <form class="insert-form" action="cadastro-meds.php" method="post">
           <span>Nome:</span>
           <input id="neds-nome" type="text" name="nome" value="">
           <span>Dosagem:</span>
@@ -32,31 +35,9 @@ require 'db.php';
         </form>
 	    </div>
 
-      <!--
-      <div id="add-form">
-        <form id="adicionar">
-          <input type="text" placeholder="Adicionar" />
-          <button>+</button>
-        </form>
-      </div>
-    -->
-
-    <footer>
-      <div class="menu">
-        <div class="menu-item selected"><i class="fa fa-user" aria-hidden="true"></i>
-        </div>
-        <div class="menu-item "><i class="fa fa-medkit" aria-hidden="true"></i>
-        </div>
-        <div class="menu-item "><i class="fa fa-clock-o" aria-hidden="true"></i>
-        </div>
-      </div>
-    </footer>
-
-
     </div>
-    <script src="js\cadastro-user.js"></script>
-    <script src="js\bootstrap.min.js"></script>
-    <script src="https://use.fontawesome.com/7913ddad50.js"></script>
+    <?php renderFooter(); ?>
+    <?php scripts(); ?>
 
 
   </body>

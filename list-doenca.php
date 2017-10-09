@@ -4,12 +4,13 @@ require 'views/layout/banner.php';
 require 'views/layout/footer.php';
 require 'web/links.php';
 require 'web/scripts.php';
-require 'getData.php';
 
-$sql_usuario="SELECT * FROM Usuario ORDER BY nome";
+$sql_doencas="SELECT * FROM Doenca ORDER BY nome";
 
-$query_usuario = $banco->query( $sql_usuario );
-$result_usuario = $query_usuario->fetchAll(PDO::FETCH_OBJ);
+$query_doencas = $banco->query( $sql_doencas );
+$result_doencas = $query_doencas->fetchAll(PDO::FETCH_OBJ);
+
+
  ?>
 
 <!DOCTYPE html>
@@ -20,31 +21,35 @@ $result_usuario = $query_usuario->fetchAll(PDO::FETCH_OBJ);
     <?php links(); ?>
 
 
-    <title>medica.me</title>
+    <title>doencaica.me</title>
 
   </head>
   <body>
     <?php renderBanner(); ?>
   	<div id="content">
       <div class="list-header">
-        <h2 class="content-title">Usuários</h2>
-        <a href="form-user.php"><i class="fa fa-plus" aria-hidden="true"></i></a>
+        <h2 class="content-title">Doenças</h2>
+        <a href="#"><i class="fa fa-plus" aria-hidden="true"></i></a>
       </div>
       <div class="main-list">
         <ul class="flex-container-ul">
           <?php
-            foreach($result_usuario as $usuario){
+            foreach($result_doencas as $doenca){
                  echo '<li>
+                 <div class="registro">
+                    '.$doenca->cid.'
+                 </div>
         <div class="registro">
         <span>
-          '.$usuario->nome.' '.$usuario->sobrenome.'
+          '.$doenca->nome.'
         </span>
     </div>
+
                 <div class="button-group">
 
-                        <form class="select" action="update-user.php" method="post">
+                        <form class="select" action="update-doenca.php" method="post">
 
-      <button type="submit" name="username" class="" value="'.$usuario->idUsuario.'">
+      <button type="submit" name="doencaName" class="" value="'.$doenca->idDoenca.'">
 
         <i class="fa fa-pencil" aria-hidden="true"></i>
 
@@ -54,9 +59,9 @@ $result_usuario = $query_usuario->fetchAll(PDO::FETCH_OBJ);
 
 
 
-            <form class="select" action="delete-user-conf.php" method="post">
+            <form class="select" action="update-user.php" method="post">
 
-      <button type="submit" name="deleteUser" class="" value="'.$usuario->idUsuario.'">
+      <button type="submit" name="username" class="" value="9">
 
         <i class="fa fa-trash" aria-hidden="true"></i>
 
@@ -80,9 +85,6 @@ $result_usuario = $query_usuario->fetchAll(PDO::FETCH_OBJ);
     </div>
     <?php renderFooter(); ?>
     <?php scripts(); ?>
-    <script type="text/javascript">
-      var jsonData=<?php echo $json; ?>;
-    </script>
 
 
   </body>

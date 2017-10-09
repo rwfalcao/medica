@@ -1,56 +1,79 @@
-html{
-  min-height: 100%;
-}
-
 body{
-    font-family: Tahoma;
-    color: #444;
-    letter-spacing: 1px;
-    min-height: 100%;
+    font-family: 'Raleway', sans-serif;
+}
+
+/* Banner */
+
+div#page-banner {
+    background: rgba(14, 123, 74, 1);
+    height: 210px;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+    top: 0px;
+}
+
+h1.title{
+    color: rgba(240, 255, 248, 1);
+    font-size: 6em;
 
 }
 
-h1, h2{
-    font-weight: normal;
+p.title-desc{
+    color: rgba(240, 255, 248, 1);
+    font-size: 2.5em;
 }
 
-/*main menu*/
+/* Content div */
 
-footer{
-  position: fixed;
-  bottom: 0px;
-  width: 100%;
-  min-height: 300px;
-  background: white;
+h2.content-title {
+    font-size: 4em;
+
+
 }
 
-.container{
-  //background: grey;
-  height: 100%;
+
+
+div#content{
+ // margin-top: 210px;
+  padding-bottom: 190px;
+  padding-top: 50px;
+  font-family: 'Raleway', sans-serif;
+  width: 80%;
+  margin: 210px auto 0px auto;
 }
 
-div.wrapper{
-  bottom: 40px;
-  left: 45%;
-  position: absolute;
-  display: block;
-  margin: 0 auto;
+
+
+
+/* Footer */
+
+footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    background: white;
+    min-height: 175px;
+    padding: 20px 0;
+    height: 190px;
 }
 
 div.menu{
-  display: flex;
-  margin: 0 auto;
-  position: absolute;
-  bottom: 60px;
-  left: 26%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
 }
 
 div.menu-item{
   width: 150px;
   height: 150px;
- border-top: rgba(14, 123, 74, 1) solid 3px;
+  border-top: rgba(14, 123, 74, 1) solid 3px;
   border-bottom: rgba(14, 123, 74, 1) solid 3px;
   border-right: rgba(14, 123, 74, 1) solid 1px;
+  text-align: center;
+
 }
 
 div.menu-item:last-child{
@@ -63,17 +86,20 @@ div.menu-item:nth-child(1){
 }
 
 .menu-item i{
-  font-size: 105px;
-  margin: 16px 0px 0px 33px;
+  font-size: 5.5em;
   color: rgba(14, 123, 74, 1);
+  margin-top: 25px;
 }
 
-.menu-item:nth-child(2) i{
-  margin-left: 20px;
+.menu-item a{
+  display: block;
+  width: 100%;
+  height: 100%;
 }
+
 
 .selected{
-  background: rgba(14, 123, 74, 1);
+  background: rgba(14, 123, 74, 0.9);
 
 }
 
@@ -81,403 +107,246 @@ div.menu-item:nth-child(1){
   color: white;
 }
 
-/* resto */
+/*Lista*/
 
-#wrapper{
-    width: 100%;
-    //max-width: 960px;
-    margin-bottom: 500px;
-    //margin: 0px 0px;
-    border-radius: 6px;
-    box-shadow: 0px 1px 6px rgba(0,0,0,0.2);
-    box-sizing: border-box;
-    padding: 0 0;
-    overflow: hidden;
-    border: 1px solid lightgray;
-    min-height: 100%;
-    display: block;
-    overflow: inherit;
-
-}
-
-#page-banner{
-    background: rgba(14, 123, 74, 1);
-    padding: 0px 0;
-    position: fixed;
-    width: 100%;
-    z-index: 1;
-    min-height: 200px;
-    padding-top: 0px;
-}
-
-#page-banner h1{
-    width: 100%;
-    text-align: left;
-    margin-left: 10%;
-    padding-top: 25px;
-    font-size: 4.5em;
-    color: rgba(240, 255, 248, 1);
-}
-
-#page-banner p{
-  width: 100%;
-  text-align: left;
-  margin-left: 10%;
-  margin-bottom: 0px;
-  font-size: 2.5em;
-  color: rgba(240, 255, 248, 1);
-}
-
-form#search{
-  padding-top: 20px;
-  padding-bottom: 35px;
-}
-
-#page-banner input{
-    width: 90%;
-    min-height: 100px;
-    //max-width: 300px;
-    margin: 20px auto;
-    display: block;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 30px;
-    color: #444;
-    border-radius: 30px;
-}
-
-
-#list-usuarios, .main-list{
-  width: 90%;
-  display: block;
-  position: absolute;
-  top: 200px;
-  left: 30px;
-  margin: 0 auto;
+.flex-container-ul li{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px rgba(14, 124, 74, 1);
+  margin-bottom: 40px;
+  background: rgba(240, 240, 240, 0.5);
   overflow: hidden;
-  z-index: 0;
-  padding-bottom: 300px;
+
 }
 
-.main-list ul.usuarios-list li span{
+.registro,
+.dosagem{
   font-size: 2.5em;
-}
-
-.main-list ul.usuarios-list li button{
-  min-width: 30px;
-  min-height: 30px;
-}
-
-form.select {
-    display: inline-block;
-}
-
-form.select button {
-    background-color: rgba(12, 126, 75, 1);
-  border: solid 5px rgba(12, 126, 75, 0.7);
-  color: white;
-  padding: 0px 15px;
-
-  text-align: center;
-  text-decoration: none;
-  display: block;
-  font-size: 2.5em;
-  margin: 0 30px 0 0;
+  padding-left: 20px;
 }
 
 
-
-#add-form {
-   position:fixed;
-   bottom:0px;
-   width:100%;
-   min-height: 200px;
-   height:60px;
-   width: 100%;
-   background: white;
+.main-list ul{
+  list-style: none;
+  padding: 0;
 }
 
-#list-ingestao ul li span,
-#list-meds ul li span{
-  padding: 20px 35px 20px 20px;
-  border-right: 5px solid #ddd;
-  margin: 20px 10px;
-  font-size: 2.3em;
-}
-#list-ingestao ul li{
-  margin-bottom: 35px;
+.main-list ul li{
+  height: 100px;
 }
 
-
-#list-usuarios, #adicionar, #tabbed-content, .main-list{
-    margin: 30px;
-}
-
-#list-usuarios ul, #tabbed-content ul, .main-list ul{
-    list-style-type: none;
-    padding: 0;
-}
-
-#list-usuarios li, .main-list li{
-    padding: 20px;
-    border-left: 5px solid #ddd;
-    margin: 20px 10px;
-}
-
-#list-usuarios li .name, .main-list li .name{
-  font-size: 2.5em;
-}
-
-#list-usuarios li:hover, .main-list li:hover{
-    border-color: #9361bf;
-}
-
-
-
-.delete{
-    float: right;
-    background: rgba(0, 179, 92, 1);
-    padding: 0px 10px;
-    border-radius: 4px;
-    color: white;
-    font-size: 4em;
-
-}
-
-.delete:hover{
-    background: #333;
-}
-
-#adicionar, #adicionar-medicamento{
-    width: 400px;
-    margin: 0 auto;
-}
-
-#adicionar input,
-#adicionar-medicamento input{
-    display: block;
-    margin: 20px 0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    border-radius: 4px 0 0 4px;
-    box-sizing: border-box;
-    width: 300px;
-    min-height: 100px;
-    float: left;
-    font-size: 30px;
-}
-
-#adicionar button,
-#adicionar-medicamento button{
-    border: 1px solid rgba(0, 179, 92, 0.3);
-    background: rgba(0, 179, 92, 1);
-    padding: 10px 20px;
-    font-size: 16px;
-    display: inline-block;
-    margin: 0;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
-    width: 100px;
-    float: left;
-    margin: 20px 0;
-    border-left: 0;
-    color: white;
-    height: 100px;
-    font-size: 2em;
-}
-
-#adicionar:after,
-#adicionar-medicamento:after{
-    content: '';
-    display: block;
-    clear: both;
-}
-
-/*usuarios lista*/
-
-#page-banner-users{
-    background: rgba(0, 179, 92, 1) ;
-    padding: 0px 0px 50px 0px;
-    position: fixed;
-    width: 100%;
-    z-index: 1;
-
-}
-
-#page-banner-users h1{
-    width: 100%;
-    text-align: left;
-    margin-left: 10%;
-    padding-top: 35px;
-    font-size: 4.5em;
-    color: rgba(240, 255, 248, 1);
-
-}
-
-#page-banner-users p{
-  width: 100%;
-  text-align: left;
-  margin-left: 10%;
-  margin-bottom: 0px;
-  font-size: 2.5em;
-  color: rgba(240, 255, 248, 1);
-}
-
-#user-profile{
-  width: 100%;
-  position: absolute;
-  top: 270px;
-}
-
-#user-profile img{
-  padding-left: 45px;
-}
-
-#user-profile span.user-name{
+div.icon{
   display: inline-block;
-  /*float: right;*/
+  width: 50px;
+  height: 50px;
+  font-size: 2em;
   text-align: center;
-  font-size: 5em;
-  padding-left: 45px;
-  padding-top: 25px;
+  color: rgba(33, 33, 33, 0.68);
+  padding-top: 10px;
 }
 
-/*usuários cadastro*/
-
-.insert-form input[type="text"]{
-  display: block;
-  width: 90%;
-  border: 1px solid grey;
-  min-height: 100px;
-  border-radius: 15px;
-  margin: 25px auto;
-  font-size: 60px;
-  color: #4C4D42;
-  text-align: center;
+.button-group{
+  display: inline-block;
 }
 
-form.insert-form{
-  margin-top: 35px;
+
+
+.select{
+  display: inline-block;
+
+}
+
+.button-group form:nth-child(2) button{
+  background: rgba(231, 60, 60, 0.90);
+  border: solid 2px rgba(231, 60, 60, 0.80);
+}
+
+.button-group button{
+  background-color: rgba(14, 124, 74, 1);
+    border: solid 2px rgba(12, 126, 75, 0.8);
+    color: white;
+    padding: 0px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 3.5em;
+    margin: 0;
+    height: 100px;
+width: 100px;
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 80px;
+}
+
+.list-header a{
+    background:rgba(14, 124, 74, 1);
+    color: white;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    font-size: 4em;
+    padding-top: 5px;
+}
+
+/*Forms*/
+.insert-form{
+  margin-top: 60px;
 }
 
 form.insert-form span{
-  display: block;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 2em;
-}
-
-form.insert-form span:not(:first-child){
-  margin-top: 75px;
-}
-
-form.insert-form button{
-  background-color: rgba(12, 126, 75, 1);
-  border: solid 5px rgba(12, 126, 75, 0.7);
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: block;
-  font-size: 3em;
-  margin: 100px auto;
-  border-radius: 10px;
-}
-
-div#rotina-final h2 {
+    display: block;
     text-align: center;
-    font-size: 5em;
+    font-size: 2em;
+}
+
+.insert-form input[type="text"]{
+    display: block;
+    width: 90%;
+    border: 1px solid grey;
+    min-height: 100px;
+    border-radius: 15px;
+    font-size: 60px;
+    color: #4C4D42;
+    text-align: center;
+    margin: 25px auto;
+}
+
+form.insert-form span:nth-child(n+2){
+    margin-top: 50px;
+}
+
+div.selectHora{
+    text-align: center;
+}
+
+.selectHora select{
+    display: inline-block;
+    width: 130px;
+    height: 130px;
+    padding: 0 0 0 30px;
+    border-radius: 10px;
+    background: rgba(14, 123, 74, 0.9);
+    color: rgba(240, 255, 248, 1);
+    font-size: 60px;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+
+}
+
+.selectHora select option{
+    font-size: 15px;
+
+}
+
+span.aspas{
+    display: inline !important;
+    font-size: 4em !important;
+
+
+}
+
+form.insert-form button {
+    background-color: rgba(12, 126, 75, 1);
+    border: solid 5px rgba(12, 126, 75, 0.7);
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 3em;
+    margin: 100px auto;
+    border-radius: 10px;
+}
+
+form.insert-form button {
+    background-color: rgba(12, 126, 75, 1);
+    border: solid 5px rgba(12, 126, 75, 0.7);
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 3em;
+    margin: 100px auto;
+    border-radius: 10px;
+}
+
+
+.expo h2{
+    font-size: 4em;
+    text-align: center;
     margin-bottom: 30px;
 }
 
-div#rotina-final {
-  margin-top: 400px;
-}
 
-.insert-form select {
-    display: block;
-    margin: 0 auto;
-    width: 50%;
-    height: 150px;
-    font-size: 60px;
-    padding: 0 0 0 30px;
-    background: rgba(14, 123, 74, 1);
-    border-radius: 15px;
+form.ingest-confirmacao button{
+    width: 100%;
+    height: 200px;
+    background-color: rgba(12, 126, 75, 1);
+    border: solid 5px rgba(12, 126, 75, 0.7);
     color: white;
-
-
-}
-
-.insert-form select option{
-    min-width: 500px;
-    font-size: 20px;
+    padding: 15px 32px;
     text-align: center;
-     height: 200px;
-
-}
-
-
-.title span {
+    text-decoration: none;
     display: block;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 4em;
+    font-size: 3em;
+    margin: 100px auto;
+    border-radius: 10px;
 }
 
-.horarios span{
+#freq select{
     display: block;
-    text-align: center;
-    padding-top: 50px;
-    font-size: 4em;
+    width: 80%px;
+    height: 130px;
+    padding: 0 0 0 30px;
+    border-radius: 10px;
+    background: rgba(14, 123, 74, 0.9);
+    color: rgba(240, 255, 248, 1);
+    font-size: 60px;
+    margin: 50px auto;
+}
+
+#freq select option{
+  font-size: 15px;
 }
 
 .horarios{
     margin-top: 100px;
 }
 
-div.selectHora{
-  text-align: center;
+.horarios h2{
+    margin-bottom: 50px;
 }
 
-.selectHora select {
-    display: inline-block;
-    width: 130px;
-    height: 130px;
-    padding: 0 0 0 23px;
-    border-radius: 10px;
-
+div.delete{
+    text-align: center;
 }
 
-span.aspas{
-    display: inline !important;
-    font-size: 5em !important;
-    color: rgba(14, 123, 74, 1);
-}
-
-
-
-
-
-/*
-#tabbed-content li{
-    display: inline-block;
-    padding: 10px 14px;
-    background: #ddd;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 10px;
-}
-
-#tabbed-content .tab{
-    display: none;
-    border: 1px solid #ddd;
-    padding: 0 10px;
-    border-radius: 4px;
-}
-
-#tabbed-content .tab.active{
+span.delete-text {
+    font-size: 3em;
+    margin-bottom: 50px;
     display: block;
 }
-*/
+
+
+
+.conf-buttons a{
+    background-color: rgba(12, 126, 75, 1);
+    border: solid 5px rgba(12, 126, 75, 0.7);
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 3em;
+    margin: 100px auto;
+    border-radius: 10px;
+}

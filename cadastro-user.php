@@ -1,5 +1,5 @@
 <?php
-require 'db.php';
+require 'config/db.php';
 
 $insert = $banco->prepare('INSERT INTO Usuario(nome, sobrenome, horaAcorda, horaDorme) VALUES(:nome, :sobrenome, :horaAcorda, :horaDorme)');
 $insert->bindParam(':nome', $nome);
@@ -16,6 +16,6 @@ $horaDormeM = $_POST['minutoDorme'];
 
 $horaAcorda = $horaAcordaH.':'.$horaAcordaM;
 $horaDorme = $horaDormeH.':'.$horaDormeM;
-echo $horaAcorda;
+
 $insert->execute();
  ?>

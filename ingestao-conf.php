@@ -4,6 +4,12 @@ require 'views/layout/banner.php';
 require 'views/layout/footer.php';
 require 'web/links.php';
 require 'web/scripts.php';
+
+$idIngestao = $_POST['idIngest'];
+$sql_insert_ing = "UPDATE Ingestao SET confirmacao = 's' WHERE Ingestao.idIngestao = ".$idIngestao;
+$insert = $banco->prepare( $sql_insert_ing );
+
+$insert->execute();
  ?>
 
 <!DOCTYPE html>
@@ -12,6 +18,7 @@ require 'web/scripts.php';
     <meta charset="utf-8">
 
     <?php links(); ?>
+
 
     <title>medica.me</title>
     <?php
@@ -23,6 +30,8 @@ require 'web/scripts.php';
   <body>
     <?php renderBanner(); ?>
   	<div id="content">
+
+
 
 
 

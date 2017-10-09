@@ -1,5 +1,5 @@
 <?php
-require 'db.php';
+require 'config/db.php';
 
 $insert = $banco->prepare('INSERT INTO Medicamento(nome, dosagem) VALUES(:nome, :dosagem)');
 $insert->bindParam(':nome', $nome);
