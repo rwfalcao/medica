@@ -6,7 +6,7 @@ require 'web/links.php';
 require 'web/scripts.php';
 require 'getData.php';
 
-$sql_usuario="SELECT * FROM Usuario ORDER BY nome";
+$sql_usuario="SELECT * FROM `Usuario` WHERE status = 'ativo' ORDER BY nome";
 
 $query_usuario = $banco->query( $sql_usuario );
 $result_usuario = $query_usuario->fetchAll(PDO::FETCH_OBJ);
@@ -63,6 +63,7 @@ $result_usuario = $query_usuario->fetchAll(PDO::FETCH_OBJ);
       </button>
 
     </form>
+
 
     </div>
 

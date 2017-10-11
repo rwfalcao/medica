@@ -121,10 +121,17 @@ div.menu-item:nth-child(1){
 
 }
 
-.registro,
-.dosagem{
+.registro{
   font-size: 2.5em;
-  padding-left: 20px;
+  
+}
+
+.registro:first-child{
+  padding-left: 25px;
+}
+
+.registro:last-child{
+  padding-right: 25px;
 }
 
 
@@ -177,6 +184,22 @@ div.icon{
 width: 100px;
 }
 
+#nota select {
+    display: block;
+    width: 20%;
+    height: 130px;
+    padding: 0 0 0 30px;
+    border-radius: 10px;
+    background: rgba(14, 123, 74, 0.9);
+    color: rgba(240, 255, 248, 1);
+    font-size: 60px;
+    margin: 50px auto;
+}
+
+#nota select option{
+    font-size: 20px;
+}
+
 .list-header {
     display: flex;
     justify-content: space-between;
@@ -191,6 +214,10 @@ width: 100px;
     text-align: center;
     font-size: 4em;
     padding-top: 5px;
+}
+
+.list-header a i{
+    padding-top: 11px;
 }
 
 /*Forms*/
@@ -337,6 +364,9 @@ span.delete-text {
 }
 
 
+.conf-buttons{
+  text-align: center;
+}
 
 .conf-buttons a{
     background-color: rgba(12, 126, 75, 1);
@@ -349,4 +379,5 @@ span.delete-text {
     font-size: 3em;
     margin: 100px auto;
     border-radius: 10px;
+
 }

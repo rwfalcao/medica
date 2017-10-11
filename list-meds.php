@@ -34,7 +34,7 @@ $result_meds = $query_meds->fetchAll(PDO::FETCH_OBJ);
           <?php
             foreach($result_meds as $med){
                  echo '<li>
-                 <div class="dosagem">
+                 <div class="registro">
                     '.$med->dosagem.'
                  </div>
         <div class="registro">

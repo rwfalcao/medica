@@ -5,19 +5,18 @@ require 'views/layout/footer.php';
 require 'web/links.php';
 require 'web/scripts.php';
 
-
-$deleteUser = $banco->prepare('DELETE FROM Usuario WHERE idUsuario = :userId');
-$deleteUser->bindParam(':userId', $userId);
-
-$deleteRotina = $banco->prepare('DELETE FROM RotinaTratamento WHERE Usuario_idUsuario = :userId');
-$deleteRotina->bindParam(':userId', $userId);
-
-$deleteIngestao = $banco->prepare('DELETE FROM Ingestao WHERE Usuario_idUsuario = :userId');
-$deleteIngestao->bindParam(':userId', $userId);
-
 $userId = $_GET['userId'];
 
+$deleteUser = $banco->prepare("UPDATE Usuario SET status = 'desativado' WHERE Usuario.idUsuario = ".$userId);
+
+$deleteRotina = $banco->prepare("UPDATE RotinaTratamento INNER JOIN Usuario ON Usuario.idUsuario = RotinaTratamento.Usuario_idUsuario SET RotinaTratamento.status = 'desativado' WHERE Usuario.idUsuario = ".$userId);
+
+$deleteIngestao = $banco->prepare("UPDATE Ingestao INNER JOIN RotinaTratamento ON RotinaTratamento.idRotinaTratamento = Ingestao.RotinaTratamento_idRotinaTratamento
+INNER JOIN Usuario ON Usuario.idUsuario = RotinaTratamento.Usuario_idUsuario SET Ingestao.status = 'desativado' WHERE Usuario.idUsuario = ".$userId);
+
 $deleteUser->execute();
+$deleteRotina->execute();
+$deleteIngestao->execute();
 
  ?>
 
@@ -40,7 +39,7 @@ $deleteUser->execute();
     <?php renderBanner(); ?>
   	<div id="content">
 
-      <?php echo $userId ?>
+      <?php echo 'sucesso' ?>
 
 
 

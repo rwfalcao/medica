@@ -6,7 +6,7 @@ require 'web/links.php';
 require 'web/scripts.php';
 require 'getData.php';
 
-$sql_rotina="SELECT RotinaTratamento.frequencia as freq,RotinaTratamento.idRotinaTratamento, Usuario.nome as username, Medicamento.nome as medname, Medicamento.dosagem as dosagem FROM RotinaTratamento INNER JOIN Usuario on (Usuario.idUsuario = RotinaTratamento.Usuario_idUsuario) INNER JOIN Medicamento on (RotinaTratamento.Medicamento_idMedicamento = Medicamento.idMedicamento) ORDER BY Usuario.nome";
+$sql_rotina="SELECT RotinaTratamento.frequencia as freq,RotinaTratamento.idRotinaTratamento, Usuario.nome as username, Medicamento.nome as medname, Medicamento.dosagem as dosagem FROM RotinaTratamento INNER JOIN Usuario on (Usuario.idUsuario = RotinaTratamento.Usuario_idUsuario) INNER JOIN Medicamento on (RotinaTratamento.Medicamento_idMedicamento = Medicamento.idMedicamento) WHERE RotinaTratamento.status = 'ativo' ORDER BY Usuario.nome";
 
 $query_rotina = $banco->query( $sql_rotina );
 $result_rotina = $query_rotina->fetchAll(PDO::FETCH_OBJ);
