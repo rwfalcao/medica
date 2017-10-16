@@ -59,7 +59,7 @@ $intervalo = $tempoAcordadoTratado / $freq_tempo;
 
 
 //$insert->execute();
-$diasIngestao = 3;
+$diasIngestao = 7;
 
 $horarios = array();
 

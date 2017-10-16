@@ -123,7 +123,7 @@ div.menu-item:nth-child(1){
 
 .registro{
   font-size: 2.5em;
-  
+
 }
 
 .registro:first-child{
@@ -165,10 +165,10 @@ div.icon{
 
 }
 
-.button-group form:nth-child(2) button{
+/*.button-group form:nth-child(2) button{
   background: rgba(231, 60, 60, 0.90);
   border: solid 2px rgba(231, 60, 60, 0.80);
-}
+}*/
 
 .button-group button{
   background-color: rgba(14, 124, 74, 1);
@@ -311,6 +311,12 @@ form.insert-form button {
     font-size: 4em;
     text-align: center;
     margin-bottom: 30px;
+}
+
+.expo span.percent{
+    text-align: center;
+    display: block;
+    font-size: 10em
 }
 
 

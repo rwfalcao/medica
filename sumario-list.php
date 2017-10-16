@@ -5,10 +5,26 @@ require 'views/layout/footer.php';
 require 'web/links.php';
 require 'web/scripts.php';
 
+$idUser = $_POST['sumario'];
+$idMed = $_GET['idMed'];
 
-$sql_rotina="SELECT RotinaTratamento.frequencia as freq,RotinaTratamento.idRotinaTratamento, Usuario.nome as username, Medicamento.nome as medname, Medicamento.dosagem as dosagem FROM RotinaTratamento INNER JOIN Usuario on (Usuario.idUsuario = RotinaTratamento.Usuario_idUsuario) INNER JOIN Medicamento on (RotinaTratamento.Medicamento_idMedicamento = Medicamento.idMedicamento) WHERE RotinaTratamento.status = 'ativo' AND Usuario.status = 'ativo' ORDER BY Usuario.nome";
+$sql_rotina="SELECT RotinaTratamento.idRotinaTratamento as idRotina,RotinaTratamento.frequencia as freq,RotinaTratamento.idRotinaTratamento, Usuario.nome as username, Medicamento.nome as medname, Medicamento.dosagem as dosagem
+FROM RotinaTratamento
+INNER JOIN Usuario on (Usuario.idUsuario = RotinaTratamento.Usuario_idUsuario)
+INNER JOIN Medicamento on (RotinaTratamento.Medicamento_idMedicamento = Medicamento.idMedicamento)
+WHERE Usuario.idUsuario = $idUser
+AND RotinaTratamento.status = 'ativo'
+AND Usuario.status = 'ativo'
+
+ORDER BY Usuario.nome";
+
 
 $query_rotina = $banco->query( $sql_rotina );
+
+
+
+
+
 $result_rotina = $query_rotina->fetchAll(PDO::FETCH_OBJ);
 
 // foreach($result_rotina as $rotina){
@@ -58,8 +74,8 @@ $result_rotina = $query_rotina->fetchAll(PDO::FETCH_OBJ);
                   </div>
 
                 <div class="button-group">
-                        <form class="select" action="delete-user-conf.php" method="post">
-                          <button type="submit" name="deleteUser" class="" value="'.$rotina->idRotinaTratamento.'">
+                        <form class="select" action="sumario.php?medname='.$rotina->medname.'&username='.$rotina->username.'&idRotina='.$rotina->idRotina.'" method="post">
+                          <button type="submit" name="sumario" class="" value="'.$idUser.'">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                           </button>
                         </form>

@@ -38,7 +38,7 @@ $result_ings = $query_ings->fetchAll(PDO::FETCH_OBJ);
     <?php renderBanner(); ?>
   	<div id="content">
       <div class="list-header">
-        <h2 class="content-title">Rotinas</h2>
+        <h2 class="content-title">Próximas ingestões:</h2>
         <a href="form-rotina-user.php"><i class="fa fa-plus" aria-hidden="true"></i></a>
       </div>
       <div class="main-list">

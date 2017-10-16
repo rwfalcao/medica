@@ -7,6 +7,8 @@
   crossorigin="anonymous"></script>
   <script src="js\scripts.js"></script>
       <script src="js\bootstrap.min.js"></script>
-        <script src="https://use.fontawesome.com/7913ddad50.js"></script>';
+        <script src="https://use.fontawesome.com/7913ddad50.js"></script>
+       
+';
   }
  ?>
